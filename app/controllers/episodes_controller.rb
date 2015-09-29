@@ -14,15 +14,16 @@ class EpisodesController < ApplicationController
 		else
 			render 'new'
 		end
-
-		def show
-			@episodes = Episode.where(podcast_id: @podcast).order("created_at DESC")
-							.reject { |e| e.id == @episode.id }
-		end
-
-		def edit
-		end
 	end
+
+	def show
+		@episodes = Episode.where(podcast_id: @podcast).order("created_at DESC")
+						.reject { |e| e.id == @episode.id }
+	end
+
+	def edit
+	end
+	
 
 	private
 
