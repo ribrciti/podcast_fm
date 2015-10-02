@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150926210411) do
     t.datetime "updated_at"
   end
 
-  add_index "episodes", ["podcast_id"], name: "index_episodes_on_podcast_id"
+  add_index "episodes", ["podcast_id"], name: "index_episodes_on_podcast_id", using: :btree
 
   create_table "podcasts", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20150926210411) do
     t.string   "podbay"
   end
 
-  add_index "podcasts", ["email"], name: "index_podcasts_on_email", unique: true
-  add_index "podcasts", ["reset_password_token"], name: "index_podcasts_on_reset_password_token", unique: true
+  add_index "podcasts", ["email"], name: "index_podcasts_on_email", unique: true, using: :btree
+  add_index "podcasts", ["reset_password_token"], name: "index_podcasts_on_reset_password_token", unique: true, using: :btree
 
 end

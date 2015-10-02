@@ -2,7 +2,7 @@
 	<div id="show_banner">
 		<div class="wrapper_skinny">
 			<h1><%= @podcast.title %></h1>
-			
+			<p class="description"><%= @podcast.description %></p>
 			<% unless @podcast.itunes.blank? %>
 				<a href="<%= @podcast.itunes %>" class="subscribe_link">iTunes</a>
 			<% end %>
@@ -20,16 +20,30 @@
 			All Podcasts
 			<span>/</span>
 			<%= link_to @podcast.title, podcast_path(@podcast) %>
-			<span></span>
+			<span>/</span>
 			<%= @episode.title %>
 		<% end %>
 	</div>
 
 	<div id="episode_content">
 		<div class="wrapper_skinny">
-			<img src="images/pic1.png" alt="Picture Here" class="current_episode_thumbnail">
-			<h2><%= @episode.title %></h2>
-			<p class="description"><%= @episode.description %></p>
+			<ul class="cf">
+				<h2><%= @episode.title %></h2>
+				<p class="description"><%= @episode.description %></p>
+				<% @episodes.each do |episode| %>
+					<li class="cf">
+						<div class="episode_thumbnail">
+							<a href="episode.html">
+								<img src="images/pic1.png" alt="Picture Here" class="current_episode_thumbnail">
+							</a>
+						</div>
+						<div class="episode_overview">
+							<h2><%= link_to episode.title, podcast_episode_path(@podcast, episode)  %></h2>
+	             <p class="description"><%= truncate(episode.description, length: 150) %></p>
+						</div>
+					</li>
+				<% end %>
+			</ul>
 		</div>
 	</div>
 
