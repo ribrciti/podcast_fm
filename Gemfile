@@ -17,7 +17,7 @@ gem 'devise', '~> 3.4.0'
 gem 'spring',        group: :development
 
 gem 'paperclip', '~> 4.2.0'
-
+gem 'will_paginate', '~> 3.0.7'
 
 
 
